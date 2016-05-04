@@ -1,0 +1,24 @@
+{
+  "name": "rely-profile_development",
+  "version": "0.1.0",
+  "author": "P. Gomersbach",
+  "summary": "Puppet development module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/relybv/rely-profile_development.git",
+  "project_page": "https://github.com/relybv/rely-profile_development",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ]
+}
