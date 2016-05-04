@@ -3,9 +3,9 @@
 # This script installs puppet 3.x or 4.x and deploy the manifest using puppet apply -e "include profile_development"
 #
 # Usage:
-# Ubuntu / Debian: wget https://raw.githubusercontent.com/pgomersbach/profile_development/master/files/bootme.sh; bash bootme.sh
+# Ubuntu / Debian: wget https://raw.githubusercontent.com/relybv/rely-profile_development/master/files/bootme.sh; bash bootme.sh
 #
-# Red Hat / CentOS: curl https://raw.githubusercontent.com/pgomersbach/profile_development/master/skeleton/files/bootme.sh -o bootme.sh; bash bootme.sh
+# Red Hat / CentOS: curl https://raw.githubusercontent.com/relybv/rely_profile_development/master/skeleton/files/bootme.sh -o bootme.sh; bash bootme.sh
 # Options: add 3 as parameter to install 4.x release
 
 # default major version, comment to install puppet 3.x
