@@ -7,6 +7,7 @@ fixtures:
     rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
     terraform: "https://github.com/inkblot/puppet-terraform.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
+    vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
 
   symlinks:
     profile_development: "#{source_dir}"

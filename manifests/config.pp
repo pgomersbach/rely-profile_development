@@ -8,4 +8,26 @@ class profile_development::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  # clone skeleton
+  vcsrepo { '/tmp/puppet-module-skeleton':
+    ensure   => present,
+    provider => git,
+    source   => 'https://github.com/pgomersbach/puppet-module-skeleton.git',
+  }
+
+  exec { 'move org skeleton':
+    cwd     => '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/module_tool/skeleton/templates',
+    command => '/bin/mv generator generator.org',
+    creates => '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/module_tool/skeleton/templates/generator.org',
+    require => Vcsrepo[ '/tmp/puppet-module-skeleton' ],
+  }
+
+  exec { 'install skeleton':
+    cwd     => '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/module_tool/skeleton/templates',
+    command => '/bin/cp -a /tmp/puppet-module-skeleton/skeleton ./generator',
+    creates => '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby/puppet/module_tool/skeleton/templates/generator',
+    require => Exec[ 'move org skeleton' ],
+  }
+
+
 }
