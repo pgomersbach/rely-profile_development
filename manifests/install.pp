@@ -8,6 +8,8 @@ class profile_development::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  ensure_packages( ['git' ,'bundler', 'unzip'] )
+
   class { 'terraform':
     version => '0.6.15',
   }

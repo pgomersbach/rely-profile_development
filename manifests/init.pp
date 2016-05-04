@@ -9,5 +9,8 @@
 #
 class profile_development
 {
-  # a profile class includes one or more classes, please include below
+  class { '::profile_development::install': } ->
+  class { '::profile_development::config': } ~>
+  class { '::profile_development::service': } ->
+  Class['::profile_development']
 }

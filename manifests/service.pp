@@ -9,10 +9,4 @@ class profile_development::service {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  service { $::profile_development::service_name:
-    ensure     => running,
-    enable     => true,
-    hasstatus  => true,
-    hasrestart => true,
-  }
 }

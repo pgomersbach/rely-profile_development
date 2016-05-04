@@ -6,6 +6,7 @@ fixtures:
     ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
     rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
     terraform: "https://github.com/inkblot/puppet-terraform.git"
+    staging: "https://github.com/nanliu/puppet-staging.git"
 
   symlinks:
     profile_development: "#{source_dir}"
