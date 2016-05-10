@@ -8,7 +8,11 @@ class profile_development::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  ensure_packages( ['git' ,'bundler', 'unzip', 'awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient'] )
+  # add ruby repository
+  include apt
+  apt::ppa { 'ppa:brightbox/ruby-ng': }
+
+  ensure_packages( ['ruby2.2', 'ruby2.2-dev', 'git' ,'bundler', 'unzip', 'awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient'] )
 
   class { 'terraform':
     version => '0.6.15',

@@ -4,14 +4,12 @@
 # It sets variables according to platform.
 #
 class profile_development::params {
-  case $::osfamily {
+  case $::operatingsystem {
     'Debian': {
-      $package_name = 'profile_development'
-      $service_name = 'profile_development'
+      $devuser = 'debian'
     }
-    'RedHat', 'Amazon': {
-      $package_name = 'profile_development'
-      $service_name = 'profile_development'
+    'Ubuntu': {
+      $devuser = 'ubuntu'
     }
     default: {
       fail("${::operatingsystem} not supported")

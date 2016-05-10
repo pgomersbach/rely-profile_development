@@ -8,7 +8,9 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class profile_development
-{
+(
+  $devuser = $::profile_development::params::devuser,
+) inherits ::profile_development::params {
   class { '::profile_development::install': } ->
   class { '::profile_development::config': } ~>
   class { '::profile_development::service': } ->

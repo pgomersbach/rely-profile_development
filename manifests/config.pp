@@ -8,7 +8,7 @@ class profile_development::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  # clone skeleton
+  # install puppet module skeleton
   vcsrepo { '/tmp/puppet-module-skeleton':
     ensure   => present,
     provider => git,
@@ -29,5 +29,5 @@ class profile_development::config {
     require => Exec[ 'move org skeleton' ],
   }
 
-
+  # create terraform ssh keys
 }

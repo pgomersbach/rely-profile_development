@@ -4,6 +4,7 @@ fixtures:
 
 # profile module layout, default include ntp module
     ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
+    apt: "https://github.com/puppetlabs/puppetlabs-apt.git"
     rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
     terraform: "https://github.com/inkblot/puppet-terraform.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
