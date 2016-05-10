@@ -12,7 +12,7 @@ class profile_development::install {
   include apt
   apt::ppa { 'ppa:brightbox/ruby-ng': }
 
-  ensure_packages( ['ruby2.2', 'ruby2.2-dev', 'git' ,'bundler', 'unzip', 'awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient'] )
+  ensure_packages( ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip', 'awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient'] )
 
   class { 'terraform':
     version => '0.6.15',
