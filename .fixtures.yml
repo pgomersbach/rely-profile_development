@@ -9,6 +9,7 @@ fixtures:
     terraform: "https://github.com/inkblot/puppet-terraform.git"
     staging: "https://github.com/nanliu/puppet-staging.git"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
+    ca_cert: "https://github.com/pcfens/puppet-ca_cert.git"
 
   symlinks:
     profile_development: "#{source_dir}"
