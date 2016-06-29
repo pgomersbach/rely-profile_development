@@ -10,7 +10,9 @@ class profile_development::install {
 
   # add ruby repository
   include apt
-  apt::ppa { 'ppa:brightbox/ruby-ng': }
+  apt::ppa { 'ppa:brightbox/ruby-ng':
+    before => Package['ruby2.3', 'ruby2.3-dev']
+  }
 
   ensure_packages( ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip', 'awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient'] )
 
