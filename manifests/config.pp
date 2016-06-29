@@ -33,7 +33,8 @@ class profile_development::config {
 
   # install cerificates
   ca_cert::ca { 'stack_naturalis_nl':
-    ensure => 'trusted',
-    source => 'https://stack.naturalis.nl:8080/swift/v1/rely/ca-bundle/stack_naturalis_nl.ca-bundle.crt',
+    ensure            => 'trusted',
+    source            => 'https://stack.naturalis.nl:8080/swift/v1/rely/ca-bundle/stack_naturalis_nl.ca-bundle.crt',
+    verify_https_cert => false,
   }
 }
