@@ -37,4 +37,11 @@ class profile_development::config {
     source            => 'https://stack.naturalis.nl:8080/swift/v1/rely/ca-bundle/stack_naturalis_nl.ca-bundle.crt',
     verify_https_cert => false,
   }
+
+  ca_cert::ca { 'stack_rely_nl':
+    ensure            => 'trusted',
+    source            => 'https://185.12.135.5:8080/v1/AUTH_810fd5f433db4c81a645a48d6fd7d3d4/rely/ca-bundle/star_openstack_rely_nl.crt',
+    verify_https_cert => false,
+  }
+
 }
