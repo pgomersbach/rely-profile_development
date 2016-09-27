@@ -1,4 +1,5 @@
 fixtures:
+  repositories:
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
       ref: "4.12.0"
@@ -9,6 +10,7 @@ fixtures:
     staging: "https://github.com/nanliu/puppet-staging.git"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     ca_cert: "https://github.com/pcfens/puppet-ca_cert.git"
+    archive: "https://github.com/voxpupuli/puppet-archive.git"
 
   symlinks:
     profile_development: "#{source_dir}"
