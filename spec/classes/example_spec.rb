@@ -15,9 +15,10 @@ describe 'profile_development' do
 
           it { is_expected.to compile.with_all_deps }
           it { is_expected.to contain_class('profile_development') }
-
-          it { is_expected.to contain_class('profile_development') }
-  
+          it { is_expected.to contain_class('profile_development::params') }
+          it { is_expected.to contain_class('profile_development::install') }
+          it { is_expected.to contain_class('profile_development::config') }
+          it { is_expected.to contain_class('profile_development::service') }
 
         end
       end

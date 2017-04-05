@@ -16,8 +16,7 @@ class profile_development::install {
     }
   }
 
-  ensure_packages( ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip',
-  'awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient'] )
+  ensure_packages( $profile_development::packages )
 
   class { 'terraform':
     version => '0.9.2',
