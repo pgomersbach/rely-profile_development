@@ -15,7 +15,7 @@ class profile_development::params {
     }
     'CentOS': {
       $devuser = 'centos'
-      $packages = ['git' ,'rubygem-bundler', 'ruby-devel', 'unzip', 'wget']
+      $packages = ['git','epel-release' ,'rubygem-bundler', 'ruby-devel', 'unzip', 'wget']
     }
     default: {
       fail("${::operatingsystem} not supported")
