@@ -11,6 +11,9 @@ class profile_development::params {
     'Ubuntu': {
       $devuser = 'ubuntu'
     }
+    'CentOS': {
+      $devuser = 'centos'
+    }
     default: {
       fail("${::operatingsystem} not supported")
     }

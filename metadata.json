@@ -1,8 +1,8 @@
 {
-  "name": "rely-profile_development",
+  "name": "rely-profile_developmentf",
   "version": "0.1.0",
   "author": "P. Gomersbach",
-  "summary": "Puppet development module",
+  "summary": "Install and configure development station",
   "license": "Apache-2.0",
   "source": "https://github.com/relybv/rely-profile_development.git",
   "project_page": "https://github.com/relybv/rely-profile_development",
@@ -17,7 +17,14 @@
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "12.04",
-        "14.04"
+        "14.04",
+        "16.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
       ]
     }
   ]

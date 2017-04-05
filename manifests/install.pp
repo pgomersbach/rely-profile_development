@@ -18,6 +18,6 @@ class profile_development::install {
   'awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient'] )
 
   class { 'terraform':
-    version => '0.6.16',
+    version => '0.9.2',
   }
 }
