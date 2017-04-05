@@ -1,19 +1,27 @@
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet/version'
-require 'puppet/vendor/semantic/lib/semantic' unless Puppet.version.to_f < 3.6
 require 'puppet-lint/tasks/puppet-lint'
 require 'puppet-syntax/tasks/puppet-syntax'
+
+if Puppet.version.to_f >= 4.9
+    require 'semantic_puppet'
+elsif Puppet.version.to_f >= 3.6 && Puppet.version.to_f < 4.9
+    require 'puppet/vendor/semantic/lib/semantic'
+end
+
+ENV['STRICT_VARIABLES'] = 'no'
 
 # These gems aren't always present, for instance
 # on Travis with --without development
 begin
+  require 'ci/reporter/rake/rspec'
   require 'puppet_blacksmith/rake_tasks'
 rescue LoadError
 end
 
 PuppetLint.configuration.relative = true
 PuppetLint.configuration.send("disable_80chars")
-PuppetLint.configuration.log_format = "%{path}:%{linenumber}:%{check}:%{KIND}:%{message}"
+# PuppetLint.configuration.log_format = "%{path}:%{linenumber}:%{check}:%{KIND}:%{message}"
 PuppetLint.configuration.fail_on_warnings = true
 
 # Forsake support for Puppet 2.6.2 for the benefit of cleaner code.
@@ -50,6 +58,11 @@ end
 
 task :setbeaker_env do
   system("BEAKER=true rake beaker")
+end
+
+desc "Run spec using ci_reporter. Run as: bundle exec rake ci:all"
+namespace :ci do
+  task :all => ['ci:setup:rspec', 'spec']
 end
 
 desc "Run beaker using rspec .fixtures.yml."

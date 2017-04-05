@@ -1,12 +1,12 @@
 HOSTS:
-  ubuntu-server-1404-x64:
+  debian-87-x64:
     roles:
       - master
-    platform: ubuntu-1404-amd64
+    platform: debian-8-amd64
     flavor: ha_localdisk.4c.16r.60h
     hypervisor: openstack
-    image: "Ubuntu 14.04 LTS"
-    user: ubuntu
+    image: "debian-8-amd64"
+    user: debian
 
 CONFIG:
   log_level: info
