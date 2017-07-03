@@ -18,7 +18,8 @@ class profile_development::install {
 
   ensure_packages( $profile_development::packages )
 
-  class { 'terraform':
-    version => '0.9.2',
+  include hashicorp
+  class { 'hashicorp::terraform':
+    version => '0.9.10',
   }
 }
