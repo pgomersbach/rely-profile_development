@@ -8,6 +8,8 @@ class profile_development::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  ensure_packages( $profile_development::packages )
+
   if $::osfamily == 'debian' {
     # add ruby repository
     include apt
@@ -16,10 +18,10 @@ class profile_development::install {
     }
   }
 
-  ensure_packages( $profile_development::packages )
-
-  include hashicorp
-  class { 'hashicorp::terraform':
-    version => '0.9.10',
+  if $::osfamily != 'FreeBSD' {
+    include hashicorp
+    class { 'hashicorp::terraform':
+      version => '0.9.10',
+    }
   }
 }

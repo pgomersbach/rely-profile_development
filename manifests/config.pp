@@ -32,16 +32,18 @@ class profile_development::config {
   # create terraform ssh keys
 
   # install cerificates
-  ca_cert::ca { 'stack_naturalis_nl':
-    ensure            => 'trusted',
-    source            => 'https://stack.naturalis.nl:8080/swift/v1/rely/ca-bundle/stack_naturalis_nl.ca-bundle.crt',
-    verify_https_cert => false,
-  }
+  if $::osfamily != 'FreeBSD' {
+    ca_cert::ca { 'stack_naturalis_nl':
+      ensure            => 'trusted',
+      source            => 'https://stack.naturalis.nl:8080/swift/v1/rely/ca-bundle/stack_naturalis_nl.ca-bundle.crt',
+      verify_https_cert => false,
+    }
 
-  ca_cert::ca { 'stack_rely_nl':
-    ensure            => 'trusted',
-    source            => 'https://access.openstack.rely.nl:8080/v1/AUTH_33b4525433f54ffe86d1c2cc305451c5/rely/star_openstack_rely_nl.crt',
-    verify_https_cert => false,
+    ca_cert::ca { 'stack_rely_nl':
+      ensure            => 'trusted',
+      source            => 'https://access.openstack.rely.nl:8080/v1/AUTH_33b4525433f54ffe86d1c2cc305451c5/rely/star_openstack_rely_nl.crt',
+      verify_https_cert => false,
+    }
   }
 
 }
