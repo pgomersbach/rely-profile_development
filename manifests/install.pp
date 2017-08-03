@@ -10,20 +10,22 @@ class profile_development::install {
 
   ensure_packages( $profile_development::packages )
 
-  class {'::ansible': }
-
   if $::osfamily == 'debian' {
-    # add ruby repository
+    # add ruby and ansible repository
     include apt
+    apt::ppa { 'ppa:ansible/ansible': }
     apt::ppa { 'ppa:brightbox/ruby-ng':
       before => Package['ruby2.3', 'ruby2.3-dev'],
+    }
+    class {'::ansible':
+      require => Apt::Ppa['ppa:ansible/ansible'],
     }
   }
 
   if $::osfamily != 'FreeBSD' {
     include hashicorp
     class { 'hashicorp::terraform':
-      version => '0.9.10',
+      version => '0.10.0',
     }
   }
 }

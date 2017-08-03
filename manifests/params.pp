@@ -11,11 +11,11 @@ class profile_development::params {
     }
     'Debian': {
       $devuser = 'debian'
-      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip','awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient']
+      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip','awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient', 'software-properties-common']
     }
     'Ubuntu': {
       $devuser = 'ubuntu'
-      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip','awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient']
+      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip','awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient', 'software-properties-common']
     }
     'CentOS': {
       $devuser = 'centos'
