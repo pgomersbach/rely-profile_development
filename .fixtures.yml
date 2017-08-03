@@ -10,8 +10,6 @@ fixtures:
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     ca_cert: "https://github.com/pcfens/puppet-ca_cert.git"
     archive: "https://github.com/voxpupuli/puppet-archive.git"
-    ansible: "https://github.com/icann-dns/puppet-ansible.git"
-    tea: "https://github.com/icann-dns/puppet-tea"
 
   symlinks:
     profile_development: "#{source_dir}"

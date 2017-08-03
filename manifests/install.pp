@@ -13,12 +13,11 @@ class profile_development::install {
   if $::osfamily == 'debian' {
     # add ruby and ansible repository
     include apt
-    apt::ppa { 'ppa:ansible/ansible': }
+    apt::ppa { 'ppa:ansible/ansible':
+      before => Package['ansible'],
+    }
     apt::ppa { 'ppa:brightbox/ruby-ng':
       before => Package['ruby2.3', 'ruby2.3-dev'],
-    }
-    class {'::ansible':
-      require => Apt::Ppa['ppa:ansible/ansible'],
     }
   }
 
