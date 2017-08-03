@@ -1,8 +1,6 @@
 fixtures:
   repositories:
-    stdlib:
-      repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-      ref: "4.13.1"
+    stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
     ntp: "https://github.com/puppetlabs/puppetlabs-ntp.git"
     apt: "https://github.com/puppetlabs/puppetlabs-apt.git"
     rspec_monitor: "git://github.com/pgomersbach/test-rspec_monitor.git"
@@ -12,6 +10,7 @@ fixtures:
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     ca_cert: "https://github.com/pcfens/puppet-ca_cert.git"
     archive: "https://github.com/voxpupuli/puppet-archive.git"
+    ansible: "https://github.com/icann-dns/puppet-ansible.git"
 
   symlinks:
     profile_development: "#{source_dir}"
