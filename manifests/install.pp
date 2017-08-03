@@ -10,6 +10,8 @@ class profile_development::install {
 
   ensure_packages( $profile_development::packages )
 
+  class {'::ansible': }
+
   if $::osfamily == 'debian' {
     # add ruby repository
     include apt
