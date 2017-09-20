@@ -9,6 +9,7 @@ fixtures:
     staging: "https://github.com/nanliu/puppet-staging.git"
     vcsrepo: "https://github.com/puppetlabs/puppetlabs-vcsrepo"
     ca_cert: "https://github.com/pcfens/puppet-ca_cert.git"
+    remote_file: "git://github.com/lwf/puppet-remote_file.git"
     archive: "https://github.com/voxpupuli/puppet-archive.git"
 
   symlinks:
