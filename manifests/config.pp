@@ -33,10 +33,8 @@ class profile_development::config {
 
   # install cerificates
   if $::osfamily != 'FreeBSD' {
-    ca_cert::ca { 'stack_naturalis_nl':
-      ensure            => 'trusted',
-      source            => 'https://stack.naturalis.nl:8080/swift/v1/rely/ca-bundle/stack_naturalis_nl.ca-bundle.crt',
-      verify_https_cert => false,
+    class { 'ca_cert':
+      install_package => true,
     }
 
     ca_cert::ca { 'stack_rely_nl':
