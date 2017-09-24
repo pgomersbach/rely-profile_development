@@ -27,4 +27,13 @@ class profile_development::install {
       version => '0.10.6',
     }
   }
+
+  # install kops
+  file { 'kops':
+    ensure => 'file',
+    path   => '/usr/local/bin/kops',
+    mode   => 'a+x',
+    source => 'https://github.com/kubernetes/kops/releases/download/1.7.0/kops-linux-amd64',
+  }
+  # install kubctl
 }
