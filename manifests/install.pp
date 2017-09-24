@@ -24,7 +24,7 @@ class profile_development::install {
   if $::osfamily != 'FreeBSD' {
     include hashicorp
     class { 'hashicorp::terraform':
-      version => '0.10.0',
+      version => '0.10.6',
     }
   }
 }
