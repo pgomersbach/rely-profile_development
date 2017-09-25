@@ -54,16 +54,6 @@ describe 'profile_development' do
             it { is_expected.to contain_package('azure-cli') }
             it { is_expected.to contain_package('jq') }
           end
-          case facts[:operatingsystem]
-          when 'CentOS'
-            it { is_expected.to contain_package('git') }
-            it { is_expected.to contain_package('epel-release') }
-            it { is_expected.to contain_package('rubygem-bundler') }
-            it { is_expected.to contain_package('ruby-devel') }
-            it { is_expected.to contain_package('unzip') }
-            it { is_expected.to contain_package('wget') }
-            it { is_expected.to contain_package('ansible') }
-          end
         end
       end
     end

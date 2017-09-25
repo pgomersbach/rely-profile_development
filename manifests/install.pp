@@ -32,7 +32,7 @@ class profile_development::install {
     }
   }
 
-  ensure_packages( $profile_development::packages, {'ensure' => 'latest'} )
+  ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
 
   include hashicorp
   class { 'hashicorp::terraform':

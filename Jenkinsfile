@@ -47,25 +47,6 @@ node {
             }
          }
       }
-      stage('Acceptance tests centos 7')
-      {
-         sh '/usr/bin/bundle exec rake spec_clean'
-         withEnv(['OS_AUTH_URL=https://access.openstack.rely.nl:5000/v2.0', 'OS_TENANT_ID=10593dbf4f8d4296a25cf942f0567050', 'OS_TENANT_NAME=lab', 'OS_PROJECT_NAME=lab', 'OS_REGION_NAME=RegionOne']) {
-            withCredentials([usernamePassword(credentialsId: 'OS_CERT', passwordVariable: 'OS_PASSWORD', usernameVariable: 'OS_USERNAME')]) {
-                sh 'BEAKER_set="openstack-centos-7-x64" /usr/bin/bundle exec rake beaker_fixtures > openstack-centos-7-x64.log'
-                sh 'sleep 5' // give the stack a moment to cleanup
-                try {
-                   // False if failures in logfile
-                   sh "grep --quiet Failures openstack-centos-7-x64.log"
-                   sh "grep -A100000 Failures openstack-centos-7-x64.log"
-                   currentBuild.result = 'FAILURE'
-                } catch (Exception err) {
-                   currentBuild.result = 'SUCCESS'
-                }
-                slackSend "Job Centos 7 ${currentBuild.result} ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
-            }
-         }
-      }
    }
    archiveArtifacts '*.log'
 }
