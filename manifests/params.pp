@@ -15,7 +15,7 @@ class profile_development::params {
     }
     'Ubuntu': {
       $devuser = 'ubuntu'
-      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip','awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient', 'software-properties-common', 'ansible']
+      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip','awscli', 'python-novaclient', 'python-neutronclient', 'python-glanceclient', 'software-properties-common', 'ansible', 'azure-cli']
     }
     'CentOS': {
       $devuser = 'centos'

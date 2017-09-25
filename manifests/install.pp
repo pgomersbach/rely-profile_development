@@ -26,6 +26,7 @@ class profile_development::install {
         'id'     => '417A0893',
         'server' => 'packages.microsoft.com',
       },
+      before   => Package['azure-cli'],
     }
   }
 
