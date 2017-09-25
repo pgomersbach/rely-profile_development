@@ -11,13 +11,21 @@ class profile_development::install {
   ensure_packages( $profile_development::packages )
 
   if $::osfamily == 'debian' {
-    # add ruby and ansible repository
+    # add repositories
     include apt
     apt::ppa { 'ppa:ansible/ansible':
       before => Package['ansible'],
     }
     apt::ppa { 'ppa:brightbox/ruby-ng':
       before => Package['ruby2.3', 'ruby2.3-dev'],
+    }
+    apt::source { 'azurecli':
+      location => 'https://packages.microsoft.com/repos/azure-cli/',
+      repos    => 'main',
+      key      => {
+        'id'     => '417A0893',
+        'server' => 'packages.microsoft.com',
+      },
     }
   }
 
