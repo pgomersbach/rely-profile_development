@@ -8,8 +8,6 @@ class profile_development::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  ensure_packages( $profile_development::packages, {'ensure' => 'latest'} )
-
   if $::osfamily == 'debian' {
     # add repositories
     include apt
@@ -33,6 +31,8 @@ class profile_development::install {
       notify   => Exec['apt_update'],
     }
   }
+
+  ensure_packages( $profile_development::packages, {'ensure' => 'latest'} )
 
   include hashicorp
   class { 'hashicorp::terraform':
