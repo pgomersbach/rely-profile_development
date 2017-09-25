@@ -35,6 +35,7 @@ class profile_development::install {
     source => 'https://github.com/kubernetes/kops/releases/download/1.7.0/kops-linux-amd64',
   }
   file { 'kops_flags':
+    path    => '/usr/local/bin/kops',
     mode    => '0755',
     require => Remote_file[ 'kops'],
   }
@@ -46,6 +47,7 @@ class profile_development::install {
     source => 'https://storage.googleapis.com/kubernetes-release/release/v1.7.6/bin/linux/amd64/kubectl',
   }
   file { 'kubctl_flags':
+    path    => '/usr/local/bin/kubctl',
     mode    => '0755',
     require => Remote_file[ 'kubctl'],
   }
