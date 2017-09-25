@@ -21,7 +21,8 @@ class profile_development::install {
     }
     apt::source { 'azurecli':
       location => 'https://packages.microsoft.com/repos/azure-cli/',
-      repos    => 'wheezy main',
+      release  => 'wheezy'
+      repos    => 'main',
       key      => {
         'id'     => '417A0893',
         'server' => 'packages.microsoft.com',
