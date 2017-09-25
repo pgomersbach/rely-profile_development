@@ -8,6 +8,9 @@ class profile_development::config {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
+  # clone github repos for organization
+  profile_development::githuborg { 'relybv': }
+
   # install puppet module skeleton
   vcsrepo { '/tmp/puppet-module-skeleton':
     ensure   => present,
