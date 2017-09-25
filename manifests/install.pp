@@ -31,11 +31,9 @@ class profile_development::install {
     }
   }
 
-  if $::osfamily != 'FreeBSD' {
-    include hashicorp
-    class { 'hashicorp::terraform':
-      version => '0.10.6',
-    }
+  include hashicorp
+  class { 'hashicorp::terraform':
+    version => '0.10.6',
   }
 
   # install kops

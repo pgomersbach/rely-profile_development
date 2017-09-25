@@ -32,16 +32,14 @@ class profile_development::config {
   # create terraform ssh keys
 
   # install cerificates
-  if $::osfamily != 'FreeBSD' {
-    class { 'ca_cert':
-      install_package => true,
-    }
-
-    ca_cert::ca { 'stack_rely_nl':
-      ensure            => 'trusted',
-      source            => 'https://access.openstack.rely.nl:8080/v1/AUTH_33b4525433f54ffe86d1c2cc305451c5/rely/star_openstack_rely_nl.crt',
-      verify_https_cert => false,
-    }
+  class { 'ca_cert':
+    install_package => true,
   }
 
+  ca_cert::ca { 'stack_rely_nl':
+    ensure            => 'trusted',
+    source            => 'https://access.openstack.rely.nl:8080/v1/AUTH_33b4525433f54ffe86d1c2cc305451c5/rely/star_openstack_rely_nl.crt',
+    verify_https_cert => false,
+  }
 }
+
