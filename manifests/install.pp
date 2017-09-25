@@ -15,9 +15,11 @@ class profile_development::install {
     include apt
     apt::ppa { 'ppa:ansible/ansible':
       before => Package['ansible'],
+      notify => Exec['apt_update'],
     }
     apt::ppa { 'ppa:brightbox/ruby-ng':
       before => Package['ruby2.3', 'ruby2.3-dev'],
+      notify => Exec['apt_update'],
     }
     apt::source { 'azurecli':
       location => 'https://packages.microsoft.com/repos/azure-cli/',
@@ -28,6 +30,7 @@ class profile_development::install {
         'server' => 'packages.microsoft.com',
       },
       before   => Package['azure-cli'],
+      notify   => Exec['apt_update'],
     }
   }
 
