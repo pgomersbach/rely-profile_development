@@ -52,6 +52,7 @@ describe 'profile_development' do
             it { is_expected.to contain_package('software-properties-common') }
             it { is_expected.to contain_package('ansible') }
             it { is_expected.to contain_package('azure-cli') }
+            it { is_expected.to contain_package('jq') }
           end
           case facts[:operatingsystem]
           when 'CentOS'
