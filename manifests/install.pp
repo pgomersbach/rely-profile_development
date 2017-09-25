@@ -8,7 +8,7 @@ class profile_development::install {
     fail("Use of private class ${name} by ${caller_module_name}")
   }
 
-  ensure_packages( $profile_development::packages, {'ensure' => 'latests'} )
+  ensure_packages( $profile_development::packages, {'ensure' => 'latest'} )
 
   if $::osfamily == 'debian' {
     # add repositories
