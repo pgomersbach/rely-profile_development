@@ -37,6 +37,7 @@ class profile_development::install {
   include hashicorp
   class { 'hashicorp::terraform':
     version => '0.10.6',
+    require => Package['unzip'],
   }
 
   # install kops
