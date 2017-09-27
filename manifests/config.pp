@@ -32,6 +32,26 @@ class profile_development::config {
     require => Exec[ 'move org skeleton' ],
   }
 
+  # install latest ansible f5 modules
+  vcsrepo { '/tmp/f5-ansible':
+    ensure   => present,
+    provider => git,
+    source   => 'https://github.com/F5Networks/f5-ansible.git',
+  }
+
+  exec { 'move org f5-ansible':
+    cwd     => '/usr/lib/python2.7/dist-packages/ansible/modules/network/',
+    command => '/bin/mv f5 /tmp/f5.org',
+    creates => '/tmp/f5.org',
+    require => Vcsrepo[ '/tmp/f5-ansible' ],
+  }
+
+  exec { 'install f5-ansible':
+    command => '/bin/cp -a /tmp/f5-ansible/library /usr/lib/python2.7/dist-packages/ansible/modules/network/f5',
+    creates => '/usr/lib/python2.7/dist-packages/ansible/modules/network/f5/bigip_command.py',
+    require => Exec[ 'move org f5-ansible' ],
+  }
+
   # create terraform ssh keys
 
   # install cerificates

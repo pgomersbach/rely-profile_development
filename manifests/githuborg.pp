@@ -1,5 +1,10 @@
-define profile_development::githuborg (
-  String[1] $orgname = $title,
+# Define: profile_development::githuborg
+#
+# This define download all github repo's from a organization
+#
+#
+define profile_development::githuborg(
+  $orgname = $title,
 ) {
 
   exec { $orgname:
