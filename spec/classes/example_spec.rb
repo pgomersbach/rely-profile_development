@@ -43,6 +43,7 @@ describe 'profile_development' do
           case facts[:osfamily]
           when 'Debian'
             it { is_expected.to contain_apt__source('azurecli') }
+            it { is_expected.to contain_apt__source('gcloud') }
             it { is_expected.to contain_apt__ppa('ppa:ansible/ansible') }
             it { is_expected.to contain_apt__ppa('ppa:brightbox/ruby-ng') }
 
@@ -59,6 +60,7 @@ describe 'profile_development' do
             it { is_expected.to contain_package('ansible') }
             it { is_expected.to contain_package('azure-cli') }
             it { is_expected.to contain_package('jq') }
+            it { is_expected.to contain_package('google-cloud-sdk') }
           end
         end
       end
