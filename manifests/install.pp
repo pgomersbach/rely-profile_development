@@ -19,6 +19,17 @@ class profile_development::install {
       before => Package['ruby2.3', 'ruby2.3-dev'],
       notify => Exec['apt_update'],
     }
+    apt::source { 'docker':
+      location => 'https://download.docker.com/linux/ubuntu',
+      release  => 'xenial',
+      repos    => 'stable',
+      key      => {
+        'id'     => '9DC858229FC7DD38854AE2D88D81803C0EBFCD88',
+        'source' => 'https://download.docker.com/linux/ubuntu/gpg',
+      },
+      before   => Package['docker.io'],
+      notify   => Exec['apt_update'],
+    }
     apt::source { 'azurecli':
       location => 'https://packages.microsoft.com/repos/azure-cli/',
       release  => 'wheezy',
