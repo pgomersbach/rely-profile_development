@@ -63,6 +63,7 @@ describe 'profile_development' do
             it { is_expected.to contain_package('jq') }
             it { is_expected.to contain_package('google-cloud-sdk') }
             it { is_expected.to contain_package('docker.io') }
+            it { is_expected.to contain_package('docker-compose') }
           end
         end
       end
