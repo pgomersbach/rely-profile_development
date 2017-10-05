@@ -11,6 +11,10 @@ class profile_development::install {
   if $::osfamily == 'debian' {
     # add repositories
     include apt
+    apt::ppa { 'ppa:awstools-dev/awstools':
+      before => Package['awscli'],
+      notify => Exec['apt_update'],
+    }
     apt::ppa { 'ppa:ansible/ansible':
       before => Package['ansible'],
       notify => Exec['apt_update'],
