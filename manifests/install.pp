@@ -11,10 +11,6 @@ class profile_development::install {
   if $::osfamily == 'debian' {
     # add repositories
     include apt
-    apt::ppa { 'ppa:awstools-dev/awstools':
-      before => Package['awscli'],
-      notify => Exec['apt_update'],
-    }
     apt::ppa { 'ppa:ansible/ansible':
       before => Package['ansible'],
       notify => Exec['apt_update'],
@@ -59,6 +55,10 @@ class profile_development::install {
   }
 
   ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
+  package { 'awscli':
+    ensure   => 'installed',
+    provider => pip,
+  }
 
   # generate standard ssh key
   ssh_keygen { $profile_development::devuser: }
