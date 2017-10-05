@@ -24,7 +24,7 @@ class profile_development::install {
       release  => 'wheezy',
       repos    => 'main',
       key      => {
-        'id'     => '417A0893',
+        'id'     => '52E16F86FEE04B979B07E28DB02C46DF417A0893',
         'server' => 'packages.microsoft.com',
       },
       before   => Package['azure-cli'],
