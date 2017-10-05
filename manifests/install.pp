@@ -56,6 +56,10 @@ class profile_development::install {
 
   ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
 
+  # generate standard ssh key
+  ssh_keygen { $profile_development::devuser: }
+
+  # install terraform
   include hashicorp
   class { 'hashicorp::terraform':
     version => '0.10.6',

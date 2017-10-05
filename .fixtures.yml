@@ -11,6 +11,7 @@ fixtures:
     ca_cert: "https://github.com/pcfens/puppet-ca_cert.git"
     remote_file: "git://github.com/lwf/puppet-remote_file.git"
     archive: "https://github.com/voxpupuli/puppet-archive.git"
+    ssh_keygen: "https://github.com/voxpupuli/puppet-ssh_keygen.git"
 
   symlinks:
     profile_development: "#{source_dir}"
