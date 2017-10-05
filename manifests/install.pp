@@ -58,6 +58,7 @@ class profile_development::install {
   package { 'awscli':
     ensure   => 'installed',
     provider => pip,
+    require  => Package['python-pip'],
   }
 
   # generate standard ssh key
