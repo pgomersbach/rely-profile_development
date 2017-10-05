@@ -22,10 +22,10 @@ describe 'profile_development' do
           it { is_expected.to contain_class('ca_cert') }
 
           it { is_expected.to contain_file('kops_flags') }
-          it { is_expected.to contain_file('kubctl_flags') }
+          it { is_expected.to contain_file('kubectl_flags') }
 
           it { is_expected.to contain_remote_file('kops') }
-          it { is_expected.to contain_remote_file('kubctl') }
+          it { is_expected.to contain_remote_file('kubectl') }
 
           it { is_expected.to contain_Vcsrepo('/tmp/puppet-module-skeleton') }
           it { is_expected.to contain_Vcsrepo('/tmp/f5-ansible') }

@@ -63,16 +63,16 @@ class profile_development::install {
     require => Remote_file[ 'kops'],
   }
 
-  # install kubctl
-  remote_file { 'kubctl':
+  # install kubectl
+  remote_file { 'kubectl':
     ensure => 'present',
-    path   => '/usr/local/bin/kubctl',
+    path   => '/usr/local/bin/kubectl',
     source => 'https://storage.googleapis.com/kubernetes-release/release/v1.7.6/bin/linux/amd64/kubectl',
   }
-  file { 'kubctl_flags':
-    path    => '/usr/local/bin/kubctl',
+  file { 'kubectl_flags':
+    path    => '/usr/local/bin/kubectl',
     mode    => '0755',
-    require => Remote_file[ 'kubctl'],
+    require => Remote_file[ 'kubectl'],
   }
 
 }
