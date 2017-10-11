@@ -49,6 +49,7 @@ describe 'profile_development' do
             it { is_expected.to contain_apt__source('gcloud') }
             it { is_expected.to contain_apt__ppa('ppa:ansible/ansible') }
             it { is_expected.to contain_apt__ppa('ppa:brightbox/ruby-ng') }
+            it { is_expected.to contain_user('ubuntu') }
             it { is_expected.to contain_package('ruby2.3') }
             it { is_expected.to contain_package('ruby2.3-dev') }
             it { is_expected.to contain_package('git') }

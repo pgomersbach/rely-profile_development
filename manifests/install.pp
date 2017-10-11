@@ -57,8 +57,14 @@ class profile_development::install {
     require  => Package['python-pip'],
   }
 
+  user { $profile_development::devuser:
+    ensure => present,
+  }
+
   # generate standard ssh key
-  ssh_keygen { $profile_development::devuser: }
+  ssh_keygen { $profile_development::devuser:
+    require => User[$profile_development::devuser],
+  }
 
   # install terraform
   include hashicorp
