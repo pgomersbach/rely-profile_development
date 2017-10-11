@@ -44,7 +44,14 @@ class profile_development::install {
   }
 
   ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
+
   package { 'awscli':
+    ensure   => 'installed',
+    provider => pip,
+    require  => Package['python-pip'],
+  }
+
+  package { 'selenium':
     ensure   => 'installed',
     provider => pip,
     require  => Package['python-pip'],
@@ -60,12 +67,40 @@ class profile_development::install {
     require => Package['unzip'],
   }
 
+  # install chromedriver
+  remote_file { 'chromedriver':
+    ensure => present,
+    path   => '/tmp/chromedriver.zip',
+    source => 'http://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip',
+  }
+
+  exec { 'unzip_chromedriver':
+    command     => '/usr/bin/unzip chromedriver.zip && mv chromedriver /usr/local/bin/',
+    cwd         => '/tmp',
+    refreshonly => true,
+    require     => Package['unzip'],
+  }
+
+  # install chrome
+  remote_file { 'chrome':
+    ensure => present,
+    path   => '/tmp/chrome.deb',
+    source => 'https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb',
+  }
+
+  package { 'chrome':
+    ensure   => latest,
+    provider => dpkg,
+    source   => '/tmp/chrome.deb',
+  }
+
   # install kops
   remote_file { 'kops':
     ensure => present,
     path   => '/usr/local/bin/kops',
     source => 'https://github.com/kubernetes/kops/releases/download/1.7.0/kops-linux-amd64',
   }
+
   file { 'kops_flags':
     path    => '/usr/local/bin/kops',
     mode    => '0755',
@@ -78,6 +113,7 @@ class profile_development::install {
     path   => '/usr/local/bin/kubectl',
     source => 'https://storage.googleapis.com/kubernetes-release/release/v1.7.6/bin/linux/amd64/kubectl',
   }
+
   file { 'kubectl_flags':
     path    => '/usr/local/bin/kubectl',
     mode    => '0755',
