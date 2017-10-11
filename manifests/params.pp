@@ -17,4 +17,5 @@ class profile_development::params {
       fail("${::operatingsystem} not supported")
     }
   }
+  $devuserhome = "/home/${devuser}"
 }

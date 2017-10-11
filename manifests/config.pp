@@ -9,7 +9,9 @@ class profile_development::config {
   }
 
   # clone github repos for organization
-  profile_development::githuborg { 'relybv': }
+  profile_development::githuborg { 'relybv':
+    targetdir => $profile_development::devuserhome,
+  }
 
   # install puppet module skeleton
   vcsrepo { '/tmp/puppet-module-skeleton':
