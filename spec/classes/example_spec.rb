@@ -76,6 +76,12 @@ describe 'profile_development' do
             it { is_expected.to contain_package('libgconf-2-4') }
             it { is_expected.to contain_package('libgdk-pixbuf2.0-0') }
             it { is_expected.to contain_package('libgtk-3-0') }
+            it { is_expected.to contain_package('fonts-liberation') }
+            it { is_expected.to contain_package('libappindicator1') }
+            it { is_expected.to contain_package('libnspr4') }
+            it { is_expected.to contain_package('libnss3') }
+            it { is_expected.to contain_package('libxss1') }
+            it { is_expected.to contain_package('xdg-utils') }
           end
         end
       end
