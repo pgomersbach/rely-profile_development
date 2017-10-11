@@ -67,6 +67,15 @@ describe 'profile_development' do
             it { is_expected.to contain_package('xvfb') }
             it { is_expected.to contain_package('chrome') }
             it { is_expected.to contain_package('selenium') }
+            it { is_expected.to contain_package('gconf-service') }
+            it { is_expected.to contain_package('libasound2') }
+            it { is_expected.to contain_package('libatk1.0-0') }
+            it { is_expected.to contain_package('libcairo2') }
+            it { is_expected.to contain_package('libcups2') }
+            it { is_expected.to contain_package('libfontconfig1') }
+            it { is_expected.to contain_package('libgconf-2-4') }
+            it { is_expected.to contain_package('libgdk-pixbuf2.0-0') }
+            it { is_expected.to contain_package('libgtk-3-0') }
           end
         end
       end

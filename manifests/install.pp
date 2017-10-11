@@ -43,7 +43,7 @@ class profile_development::install {
     }
   }
 
-  ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
+  ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'], before => Package['chrome'],} )
 
   package { 'awscli':
     ensure   => 'installed',
