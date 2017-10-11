@@ -44,7 +44,6 @@ describe 'profile_development' do
           when 'Debian'
             it { is_expected.to contain_apt__source('azurecli') }
             it { is_expected.to contain_apt__source('gcloud') }
-            it { is_expected.to contain_apt__source('docker') }
             it { is_expected.to contain_apt__ppa('ppa:ansible/ansible') }
             it { is_expected.to contain_apt__ppa('ppa:brightbox/ruby-ng') }
             it { is_expected.to contain_package('ruby2.3') }
@@ -61,8 +60,8 @@ describe 'profile_development' do
             it { is_expected.to contain_package('azure-cli') }
             it { is_expected.to contain_package('jq') }
             it { is_expected.to contain_package('google-cloud-sdk') }
-            it { is_expected.to contain_package('docker.io') }
-            it { is_expected.to contain_package('docker-compose') }
+            it { is_expected.to contain_package('python-pip') }
+            it { is_expected.to contain_package('xvfb') }
           end
         end
       end

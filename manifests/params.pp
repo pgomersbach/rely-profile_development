@@ -11,7 +11,7 @@ class profile_development::params {
     }
     'Ubuntu': {
       $devuser = 'ubuntu'
-      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip', 'python-pip', 'python-novaclient', 'python-neutronclient', 'python-glanceclient', 'software-properties-common', 'ansible', 'azure-cli', 'jq', 'google-cloud-sdk', 'docker.io', 'docker-compose', 'xvfb']
+      $packages = ['ruby2.3', 'ruby2.3-dev', 'git' ,'bundler', 'unzip', 'python-pip', 'python-novaclient', 'python-neutronclient', 'python-glanceclient', 'software-properties-common', 'ansible', 'azure-cli', 'jq', 'google-cloud-sdk', 'xvfb']
     }
     default: {
       fail("${::operatingsystem} not supported")
