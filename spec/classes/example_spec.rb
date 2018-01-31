@@ -85,6 +85,9 @@ describe 'profile_development' do
             it { is_expected.to contain_package('libnss3') }
             it { is_expected.to contain_package('libxss1') }
             it { is_expected.to contain_package('xdg-utils') }
+            it { is_expected.to contain_package('python-mysql.connector') }
+            it { is_expected.to contain_package('rspec') }
+            it { is_expected.to contain_package('selenium-webdriver') }
           end
         end
       end

@@ -45,6 +45,8 @@ class profile_development::install {
 
   ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'], before => Package['chrome'],} )
 
+
+
   package { 'awscli':
     ensure   => 'installed',
     provider => pip,
@@ -55,6 +57,11 @@ class profile_development::install {
     ensure   => 'installed',
     provider => pip,
     require  => Package['python-pip'],
+  }
+
+  package { ['selenium-webdriver', 'rspec']:
+    ensure   => 'installed',
+    provider => gem,
   }
 
   user { $profile_development::devuser:
