@@ -69,7 +69,7 @@ class profile_development::install {
   # install terraform
   include hashicorp
   class { 'hashicorp::terraform':
-    version => '0.10.6',
+    version => '0.11.2',
     require => Package['unzip'],
   }
 
@@ -77,7 +77,7 @@ class profile_development::install {
   remote_file { 'chromedriver':
     ensure => present,
     path   => '/tmp/chromedriver.zip',
-    source => 'http://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip',
+    source => 'http://chromedriver.storage.googleapis.com/2.35/chromedriver_linux64.zip',
   }
 
   exec { 'unzip_chromedriver':
@@ -104,7 +104,7 @@ class profile_development::install {
   remote_file { 'kops':
     ensure => present,
     path   => '/usr/local/bin/kops',
-    source => 'https://github.com/kubernetes/kops/releases/download/1.7.0/kops-linux-amd64',
+    source => 'https://github.com/kubernetes/kops/releases/download/1.8.0/kops-linux-amd64',
   }
 
   file { 'kops_flags':
@@ -117,7 +117,7 @@ class profile_development::install {
   remote_file { 'kubectl':
     ensure => 'present',
     path   => '/usr/local/bin/kubectl',
-    source => 'https://storage.googleapis.com/kubernetes-release/release/v1.7.6/bin/linux/amd64/kubectl',
+    source => 'https://storage.googleapis.com/kubernetes-release/release/v1.9.2/bin/linux/amd64/kubectl',
   }
 
   file { 'kubectl_flags':
