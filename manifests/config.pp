@@ -58,7 +58,7 @@ class profile_development::config {
   vcsrepo { '/etc/ansible/f5-ansible_automation':
     ensure   => latest,
     provider => git,
-    source   => 'https://github.com/f5-ansible_automation.git',
+    source   => 'https://github.com/relybv/f5-ansible_automation.git',
   }
 
   # create terraform ssh keys
