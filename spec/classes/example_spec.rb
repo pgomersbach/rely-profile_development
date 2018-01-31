@@ -39,6 +39,7 @@ describe 'profile_development' do
           it { is_expected.to contain_exec('move org f5-ansible') }
           it { is_expected.to contain_exec('relybv') }
           it { is_expected.to contain_exec('unzip_chromedriver') }
+          it { is_expected.to contain_exec('f5-ansible-requirements') }
 
           it { is_expected.to contain_Profile_development__Githuborg('relybv') }
           it { is_expected.to contain_Ca_cert__Ca('stack_rely_nl') }

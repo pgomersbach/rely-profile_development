@@ -61,6 +61,11 @@ class profile_development::config {
     source   => 'https://github.com/relybv/f5-ansible_automation.git',
   }
 
+  exec { 'f5-ansible-requirements':
+    cwd     => '/etc/ansible/f5-ansible_automation',
+    command => '/usr/bin/pip install -r requirements.txt',
+  }
+
   # create terraform ssh keys
 
   # install cerificates
