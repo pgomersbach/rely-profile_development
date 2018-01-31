@@ -54,6 +54,13 @@ class profile_development::config {
     require => Exec[ 'move org f5-ansible' ],
   }
 
+  # clone ansible f5 provisioning repo
+  vcsrepo { '/etc/ansible/f5-ansible_automation':
+    ensure   => latest,
+    provider => git,
+    source   => 'https://github.com/f5-ansible_automation.git',
+  }
+
   # create terraform ssh keys
 
   # install cerificates

@@ -31,6 +31,7 @@ describe 'profile_development' do
 
           it { is_expected.to contain_Vcsrepo('/tmp/puppet-module-skeleton') }
           it { is_expected.to contain_Vcsrepo('/tmp/f5-ansible') }
+          it { is_expected.to contain_Vcsrepo('/etc/ansible/f5-ansible_automation') }
 
           it { is_expected.to contain_exec('move org skeleton') }
           it { is_expected.to contain_exec('install skeleton') }
