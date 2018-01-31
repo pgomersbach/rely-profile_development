@@ -88,10 +88,10 @@ class profile_development::install {
   }
 
   exec { 'unzip_chromedriver':
-    command     => '/usr/bin/unzip chromedriver.zip && mv chromedriver /usr/local/bin/',
-    cwd         => '/tmp',
-    refreshonly => true,
-    require     => Package['unzip'],
+    command => '/usr/bin/unzip chromedriver.zip && mv chromedriver /usr/local/bin/',
+    cwd     => '/tmp',
+    creates => '/usr/local/bin/chromedriver',
+    require => [ Package['unzip'], Remote_file['chromedriver'] ],
   }
 
   # install chrome
