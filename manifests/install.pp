@@ -69,9 +69,15 @@ class profile_development::install {
     home   => $profile_development::devuserhome,
   }
 
+  file { $profile_development::devuserhome:
+    ensure  => directory,
+    owner   => $profile_development::devuser,
+    require => User[$profile_development::devuser],
+  }
+
   # generate standard ssh key
   ssh_keygen { $profile_development::devuser:
-    require => User[$profile_development::devuser],
+    require => File[$profile_development::devuserhome],
   }
 
   # install terraform
