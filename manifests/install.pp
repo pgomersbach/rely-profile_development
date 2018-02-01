@@ -66,6 +66,7 @@ class profile_development::install {
 
   user { $profile_development::devuser:
     ensure => present,
+    home   => $profile_development::devuserhome,
   }
 
   # generate standard ssh key
