@@ -17,7 +17,7 @@ class profile_development::config {
   vcsrepo { '/tmp/puppet-module-skeleton':
     ensure   => present,
     provider => git,
-    source   => 'https://github.com/pgomersbach/puppet-module-skeleton.git',
+    source   => 'https://github.com/relybv/puppet-module-skeleton.git',
   }
 
   exec { 'move org skeleton':
