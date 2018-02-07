@@ -53,6 +53,12 @@ class profile_development::install {
     require  => Package['python-pip'],
   }
 
+  package { 'objectpath':
+    ensure   => 'installed',
+    provider => pip,
+    require  => Package['python-pip'],
+  }
+
   package { 'selenium':
     ensure   => 'installed',
     provider => pip,

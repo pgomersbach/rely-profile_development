@@ -23,6 +23,7 @@ describe 'profile_development' do
 
           it { is_expected.to contain_file('kops_flags') }
           it { is_expected.to contain_file('kubectl_flags') }
+          it { is_expected.to contain_file('/home/ubuntu') }
 
           it { is_expected.to contain_remote_file('kops') }
           it { is_expected.to contain_remote_file('kubectl') }
@@ -88,6 +89,7 @@ describe 'profile_development' do
             it { is_expected.to contain_package('python-mysql.connector') }
             it { is_expected.to contain_package('rspec') }
             it { is_expected.to contain_package('selenium-webdriver') }
+            it { is_expected.to contain_package('objectpath') }
           end
         end
       end
