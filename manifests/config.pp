@@ -41,12 +41,12 @@ class profile_development::config {
     source   => 'https://github.com/F5Networks/f5-ansible.git',
   }
 
-#  exec { 'move org f5-ansible':
-#    cwd     => '/usr/lib/python2.7/dist-packages/ansible/modules/network/',
-#    command => '/bin/mv f5 /tmp/f5.org',
-#    creates => '/tmp/f5.org',
-#    require => Vcsrepo[ '/tmp/f5-ansible' ],
-#  }
+  exec { 'move org f5-ansible':
+    cwd     => '/usr/local/lib/python2.7/dist-packages/ansible-2.5.0b2-py2.7.egg/ansible/modules/network/',
+    command => '/bin/mv f5 /tmp/f5.org',
+    creates => '/tmp/f5.org',
+    require => Vcsrepo[ '/tmp/f5-ansible' ],
+  }
 
   exec { 'install f5-ansible':
     command => '/bin/cp -a /tmp/f5-ansible/library /usr/share/ansible/network/f5',

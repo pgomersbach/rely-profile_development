@@ -43,12 +43,12 @@ class profile_development::install {
 
   ensure_packages( $profile_development::ansible_packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
 
-  # install ansible 1.5
+  # install ansible 2.5
   vcsrepo { '/root/ansible5':
     ensure   => present,
     provider => git,
     source   => 'git://github.com/ansible/ansible.git',
-    revision => 'release1.5.0',
+    revision => 'stable-2.5',
     require  => Package['autoconf'],
   }
 
