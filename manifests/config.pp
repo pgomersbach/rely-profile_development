@@ -49,8 +49,8 @@ class profile_development::config {
   }
 
   exec { 'install f5-ansible':
-    command => '/bin/cp -a /tmp/f5-ansible/library /usr/share/ansible/network/f5',
-    creates => '/usr/share/ansible/network/f5',
+    command => '/bin/cp -a /tmp/f5-ansible/library /usr/local/lib/python2.7/dist-packages/ansible-2.5.0b2-py2.7.egg/ansible/modules/network/f5',
+    creates => '/usr/local/lib/python2.7/dist-packages/ansible-2.5.0b2-py2.7.egg/ansible/modules/network/f5',
     require => Vcsrepo[ '/tmp/f5-ansible' ],
   }
 
