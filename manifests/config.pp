@@ -41,17 +41,17 @@ class profile_development::config {
     source   => 'https://github.com/F5Networks/f5-ansible.git',
   }
 
-  exec { 'move org f5-ansible':
-    cwd     => '/usr/lib/python2.7/dist-packages/ansible/modules/network/',
-    command => '/bin/mv f5 /tmp/f5.org',
-    creates => '/tmp/f5.org',
-    require => Vcsrepo[ '/tmp/f5-ansible' ],
-  }
+#  exec { 'move org f5-ansible':
+#    cwd     => '/usr/lib/python2.7/dist-packages/ansible/modules/network/',
+#    command => '/bin/mv f5 /tmp/f5.org',
+#    creates => '/tmp/f5.org',
+#    require => Vcsrepo[ '/tmp/f5-ansible' ],
+#  }
 
   exec { 'install f5-ansible':
-    command => '/bin/cp -a /tmp/f5-ansible/library /usr/lib/python2.7/dist-packages/ansible/modules/network/f5',
-    creates => '/usr/lib/python2.7/dist-packages/ansible/modules/network/f5/bigip_command.py',
-    require => Exec[ 'move org f5-ansible' ],
+    command => '/bin/cp -a /tmp/f5-ansible/library /usr/share/ansible/network/f5',
+    creates => '/usr/share/ansible/network/f5',
+    require => Vcsrepo[ '/tmp/f5-ansible' ],
   }
 
   # clone ansible f5 provisioning repo

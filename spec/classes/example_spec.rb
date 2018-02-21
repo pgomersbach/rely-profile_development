@@ -39,7 +39,6 @@ describe 'profile_development' do
           it { is_expected.to contain_exec('move org skeleton') }
           it { is_expected.to contain_exec('install skeleton') }
           it { is_expected.to contain_exec('install f5-ansible') }
-          it { is_expected.to contain_exec('move org f5-ansible') }
           it { is_expected.to contain_exec('relybv') }
           it { is_expected.to contain_exec('unzip_chromedriver') }
           it { is_expected.to contain_exec('f5-ansible-requirements') }
