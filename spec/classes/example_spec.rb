@@ -30,10 +30,12 @@ describe 'profile_development' do
           it { is_expected.to contain_remote_file('chrome') }
           it { is_expected.to contain_remote_file('chromedriver') }
 
+          it { is_expected.to contain_Vcsrepo('/root/ansible5') }
           it { is_expected.to contain_Vcsrepo('/tmp/puppet-module-skeleton') }
           it { is_expected.to contain_Vcsrepo('/tmp/f5-ansible') }
           it { is_expected.to contain_Vcsrepo('/etc/ansible/f5-ansible_automation') }
 
+          it { is_expected.to contain_exec('make ansible') }
           it { is_expected.to contain_exec('move org skeleton') }
           it { is_expected.to contain_exec('install skeleton') }
           it { is_expected.to contain_exec('install f5-ansible') }
@@ -46,11 +48,29 @@ describe 'profile_development' do
           it { is_expected.to contain_Ca_cert__Ca('stack_rely_nl') }
           it { is_expected.to contain_Ssh_keygen('ubuntu') }
 
+          it { is_expected.to contain_package('asciidoc') }
+          it { is_expected.to contain_package('autoconf') }
+          it { is_expected.to contain_package('cdbs') }
+          it { is_expected.to contain_package('debhelper') }
+          it { is_expected.to contain_package('devscripts') }
+          it { is_expected.to contain_package('dpkg-dev') }
+          it { is_expected.to contain_package('fakeroot') }
+          it { is_expected.to contain_package('libffi-dev') }
+          it { is_expected.to contain_package('pbuilder') }
+          it { is_expected.to contain_package('python-httplib2') }
+          it { is_expected.to contain_package('python-jinja2') }
+          it { is_expected.to contain_package('python-nose') }
+          it { is_expected.to contain_package('python-paramiko') }
+          it { is_expected.to contain_package('python-passlib') }
+          it { is_expected.to contain_package('python-setuptools') }
+          it { is_expected.to contain_package('python-yaml') }
+          it { is_expected.to contain_package('sshpass') }
+          it { is_expected.to contain_package('xmlto') }
+
           case facts[:osfamily]
           when 'Debian'
             it { is_expected.to contain_apt__source('azurecli') }
             it { is_expected.to contain_apt__source('gcloud') }
-            it { is_expected.to contain_apt__ppa('ppa:ansible/ansible') }
             it { is_expected.to contain_apt__ppa('ppa:brightbox/ruby-ng') }
             it { is_expected.to contain_user('ubuntu') }
             it { is_expected.to contain_package('ruby2.3') }
@@ -63,7 +83,6 @@ describe 'profile_development' do
             it { is_expected.to contain_package('python-neutronclient') }
             it { is_expected.to contain_package('python-glanceclient') }
             it { is_expected.to contain_package('software-properties-common') }
-            it { is_expected.to contain_package('ansible') }
             it { is_expected.to contain_package('azure-cli') }
             it { is_expected.to contain_package('jq') }
             it { is_expected.to contain_package('google-cloud-sdk') }

@@ -11,10 +11,6 @@ class profile_development::install {
   if $::osfamily == 'debian' {
     # add repositories
     include apt
-    apt::ppa { 'ppa:ansible/ansible':
-      before => Package['ansible'],
-      notify => Exec['apt_update'],
-    }
     apt::ppa { 'ppa:brightbox/ruby-ng':
       before => Package['ruby2.3', 'ruby2.3-dev'],
       notify => Exec['apt_update'],
@@ -45,7 +41,22 @@ class profile_development::install {
 
   ensure_packages( $profile_development::packages, {'ensure' => 'latest', require => Exec['apt_update'], before => Package['chrome'],} )
 
+  ensure_packages( $profile_development::ansible_packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
 
+  # install ansible 1.5
+  vcsrepo { '/root/ansible5':
+    ensure   => present,
+    provider => git,
+    source   => 'git://github.com/ansible/ansible.git',
+    revision => 'release1.5.0',
+    require  => Package['autoconf'],
+  }
+
+  exec { 'make ansible':
+    command => '/usr/bin/make install',
+    cwd     => '/root/ansible5',
+    require => Vcsrepo['/root/ansible5'],
+  }
 
   package { 'awscli':
     ensure   => 'installed',
