@@ -87,6 +87,7 @@ class profile_development::install {
   package { ['selenium-webdriver', 'rspec']:
     ensure   => 'installed',
     provider => gem,
+    require  => Package['python-pip'],
   }
 
   user { $profile_development::devuser:
