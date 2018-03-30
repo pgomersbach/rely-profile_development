@@ -43,6 +43,10 @@ class profile_development::install {
 
   ensure_packages( $profile_development::ansible_packages, {'ensure' => 'latest', require => Exec['apt_update'],} )
 
+  # install ansible dependencies
+  exec { '/usr/bin/pip install packaging': }
+  exec { '/usr/bin/pip install setuptools --upgrade': }
+
   # install ansible 2.5
   vcsrepo { '/root/ansible5':
     ensure   => present,
